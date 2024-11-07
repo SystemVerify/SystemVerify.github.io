@@ -88,39 +88,30 @@
     </div>
 
     <script>
-        // Obtém o ano atual e exibe
         document.getElementById("anoAtual").textContent = new Date().getFullYear();
 
-        // Função para gerar o código de validação com base no CPF
         function gerarCodigo() {
             const cpfInput = document.getElementById("cpf").value;
 
-            // Verifica se o CPF é válido (11 dígitos)
             if (cpfInput.length !== 11 || isNaN(cpfInput)) {
                 alert("Por favor, insira um CPF válido com 11 dígitos.");
                 return;
             }
 
-            // Primeira parte do código: CPF com variação de +3 em cada dígito
             let primeiraParte = "";
             for (let i = 0; i < cpfInput.length; i++) {
-                // Soma 3 a cada dígito e adiciona ao resultado
                 primeiraParte += (parseInt(cpfInput[i]) + 3) % 10;
             }
-
-            // Segunda parte do código: variação dos últimos 4 dígitos do CPF
+            
             const ultimosQuatro = cpfInput.slice(-4);
             let segundaParte = "";
 
             for (let i = 0; i < 4; i++) {
-                // A variação adiciona o índice * 2 ao valor de cada dígito
                 segundaParte += (parseInt(ultimosQuatro[i]) + i * 2) % 10;
             }
 
-            // Combina as duas partes
             const codigo = `${primeiraParte}-${segundaParte}`;
 
-            // Exibe o código gerado
             document.getElementById("codigoValidacao").textContent = `Código de validação: ${codigo}`;
         }
     </script>
