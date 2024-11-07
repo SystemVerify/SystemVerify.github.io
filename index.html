@@ -73,11 +73,12 @@
             Carteirinha validada com sucesso!
             <br>
         </div>
+        <p>" "</p>
         <p class="small no-margin pull-left sm-pull-reset"> 
           <span class="hint-text">
             © 
           </span>
-          <span class="ng-binding">2024</span> 
+          <span class="ng-binding">anoAtual</span> 
           <span class="font-montserrat">
             UNICESUMAR
           </span>
@@ -88,4 +89,11 @@
 
     </div>
 </body>
+    <script>
+        // Obtém o ano atual
+        const anoAtual = new Date().getFullYear();
+        
+        // Exibe o ano atual no elemento com o ID "anoAtual"
+        document.getElementById("anoAtual").textContent = anoAtual;
+    </script>
 </html>
