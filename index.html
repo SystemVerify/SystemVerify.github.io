@@ -8,8 +8,8 @@
     <title>UniCesumar - Validação de Carteirinha Estudantil</title>
     <style>
         @font-face {
-          font-family: Studeo Regular;
-          src: url(/studeo-regular.ttf);
+            font-family: Studeo Regular;
+            src: url(/studeo-regular.ttf);
         }
         body {
             font-family: Studeo Regular;
@@ -35,26 +35,38 @@
             width: 130px;
         }
         .message {
-            display: block;
-            align-items: center;
-            justify-content: center;
             font-size: 16px;
             color: #005387;
             margin-top: 10px;
-            margin-right: 20px;
         }
-        .message img {
-            width: 24px;
-            height: 24px;
-            margin-right: 10px;
-            margin-left: 10px;
+        input#cpf {
+            margin-top: 10px;
+            padding: 8px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
-        .success-icon {
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            background-color: #005387;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #codigoValidacao {
+            margin-top: 15px;
+            font-size: 16px;
             color: #4caf50;
         }
-        span {
-          font-size: 10px;
-          color: rgb(155, 195, 240);
+        .hint-text {
+            font-size: 10px;
+            color: rgb(155, 195, 240);
         }
     </style>
 </head>
@@ -62,33 +74,51 @@
     <div class="container">
         <img src="logo.webp" alt="valida">
         <div class="message">
-            <img src="https://img.icons8.com/ios-filled/50/4caf50/ok.png" alt="Ícone de Sucesso" class="success-icon">
-            <br>
-            Código de validação 16622164643-2853 autêntico!
-            <br>
-            Carteirinha validada com sucesso!
-            <br>
-            <p class="small no-margin pull-left sm-pull-reset"> 
-          <span class="hint-text">
-            © 
-          </span>
-          <span id="anoAtual" class="ng-binding"></span> 
-          <span class="font-montserrat">
-            UNICESUMAR
-          </span>
-          <span class="hint-text">
-            . Todos os direitos reservados.
-          </span> 
-        </p>
+            <label for="cpf">Digite o CPF:</label>
+            <input type="text" id="cpf" maxlength="11" placeholder="Somente números" />
+            <button onclick="gerarCodigo()">Gerar Código</button>
+            <p id="codigoValidacao"></p>
         </div>
-        
+        <p class="small no-margin pull-left sm-pull-reset"> 
+            <span class="hint-text">© </span>
+            <span id="anoAtual" class="ng-binding"></span> 
+            <span class="font-montserrat">UNICESUMAR</span>
+            <span class="hint-text">. Todos os direitos reservados.</span> 
+        </p>
     </div>
-</body>
+
     <script>
-        // Obtém o ano atual
-        const anoAtual = new Date().getFullYear();
-        
-        // Exibe o ano atual no elemento com o ID "anoAtual"
-        document.getElementById("anoAtual").textContent = anoAtual;
+        // Obtém o ano atual e exibe
+        document.getElementById("anoAtual").textContent = new Date().getFullYear();
+
+        // Função para gerar o código de validação com base no CPF
+        function gerarCodigo() {
+            const cpfInput = document.getElementById("cpf").value;
+
+            // Verifica se o CPF é válido (11 dígitos)
+            if (cpfInput.length !== 11 || isNaN(cpfInput)) {
+                alert("Por favor, insira um CPF válido com 11 dígitos.");
+                return;
+            }
+
+            // Primeira parte do código: CPF original
+            const primeiraParte = cpfInput;
+
+            // Segunda parte do código: variação dos últimos 4 dígitos do CPF
+            const ultimosQuatro = cpfInput.slice(-4);
+            let segundaParte = "";
+
+            for (let i = 0; i < 4; i++) {
+                // A variação adiciona o índice * 2 ao valor de cada dígito
+                segundaParte += (parseInt(ultimosQuatro[i]) + i * 2) % 10;
+            }
+
+            // Combina as duas partes
+            const codigo = `${primeiraParte}-${segundaParte}`;
+
+            // Exibe o código gerado
+            document.getElementById("codigoValidacao").textContent = `Código de validação: ${codigo}`;
+        }
     </script>
+</body>
 </html>
