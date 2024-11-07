@@ -33,12 +33,64 @@
         img {
             width: 130px;
         }
-        .message {
+        .success-icon {
+            width: 30px;
+        }
+        #message {
             font-size: 16px;
             color: #005387;
             margin-top: 10px;
+            display: none;
         }
-        input#cpf {
+        #cpf {
+            font-size: 16px;
+            color: #005387;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .hide {
+            display: none;
+        }
+        .error-message {
+            color: #ff0000;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .error-message.hide {
+            display: none;
+        }
+        .error-message.show {
+            display: block;
+        }
+        .error-message.show {
+            display: block;
+        }
+        .error-message.hide {
+            display: none;
+        }
+        .error-message.show {
+            display: block;
+        }
+        .error-message.hide {
+            display: none;
+        }
+        .error-message.show {
+            display: block;
+        }
+        .error-message.hide {
+            display: none;
+        }
+        .error-message.show {
+            display: block;
+        }
+        .error-message.hide {
+            display: none;
+        }
+        .error-message.show {
+            display: block;
+        }
+        input#inputcpf {
             margin-top: 10px;
             padding: 8px;
             font-size: 16px;
@@ -72,26 +124,28 @@
 <body>
     <div class="container">
         <img src="logo.webp" alt="valida">
-        <div class="message">
+        <div id="cpf">
             <label for="cpf">Digite o CPF do(a) estudante:</label>
-            <input type="text" id="cpf" maxlength="11" placeholder="Somente números">
+            <input type="text" id="inputcpf" maxlength="11" placeholder="Somente números">
             <button onclick="gerarCodigo()">Validar carteirinha</button>
-
-            <div class="container">
-            <img src="logo.webp" alt="valida">
-            <div class="message">
-            <img src="https://img.icons8.com/ios-filled/50/4caf50/ok.png" alt="Ícone de Sucesso" class="success-icon">
-                <p> </p>
-            
-            <p id="codigoValidacao"></p>
         </div>
+        <!-- <div class="container">
+            <img src="logo.webp" alt="valida"> -->
+            <div id="message">
+                <img src="https://img.icons8.com/ios-filled/50/4caf50/ok.png" alt="Ícone de Sucesso" class="success-icon">
+                    <!-- <p></p> -->
+                    <br>Carteirinha validada com sucesso!<br>
+                
+                <p id="codigoValidacao"></p>
+            </div>
+
         <p class="small no-margin pull-left sm-pull-reset"> 
             <span class="hint-text">© </span>
             <span id="anoAtual" class="hint-text">2024</span> 
             
             <span class="hint-text">UNICESUMAR. Todos os direitos reservados.</span> 
         </p>
-    </div>
+    
 
     <script>
         // Obtém o ano atual e exibe
@@ -99,7 +153,7 @@
 
         // Função para gerar o código de validação com base no CPF
         function gerarCodigo() {
-            const cpfInput = document.getElementById("cpf").value;
+            const cpfInput = document.getElementById("inputcpf").value;
 
             // Verifica se o CPF é válido (11 dígitos)
             if (cpfInput.length !== 11 || isNaN(cpfInput)) {
@@ -127,7 +181,10 @@
             const codigo = `${primeiraParte}-${segundaParte}`;
 
             // Exibe o código gerado
-            document.getElementById("codigoValidacao").textContent = `Código de validação: ${codigo}`;
+            document.getElementById("cpf").style.display = "none";
+            document.getElementById("codigoValidacao").textContent = `Código de validação: ${codigo} autêntico!`
+            document.getElementById("message").style.display = "block";
+            
         }
     </script>
 
