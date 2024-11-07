@@ -101,8 +101,12 @@
                 return;
             }
 
-            // Primeira parte do código: CPF original
-            const primeiraParte = cpfInput;
+            // Primeira parte do código: CPF com variação de +3 em cada dígito
+            let primeiraParte = "";
+            for (let i = 0; i < cpfInput.length; i++) {
+                // Soma 3 a cada dígito e adiciona ao resultado
+                primeiraParte += (parseInt(cpfInput[i]) + 3) % 10;
+            }
 
             // Segunda parte do código: variação dos últimos 4 dígitos do CPF
             const ultimosQuatro = cpfInput.slice(-4);
