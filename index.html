@@ -89,9 +89,9 @@
     <div class="container">
         <img src="logo.webp" alt="valida">
         <div id="cpf">
-            <label for="cpf">Digite o CPF do(a) estudante:</label>
-            <input type="text" id="inputcpf" maxlength="11" placeholder="Somente números">
-            <button onclick="gerarCodigo()">Validar carteirinha</button>
+<!--             <label for="cpf">Digite o CPF do(a) estudante:</label> -->
+<!--             <input type="text" id="inputcpf" maxlength="11" placeholder="Somente números"> -->
+<!--             <button onclick="gerarCodigo()">Validar carteirinha</button> -->
         </div>
         <div id="message">
             <img src="https://img.icons8.com/ios-filled/50/4caf50/ok.png" alt="Ícone de Sucesso" class="success-icon">
@@ -141,7 +141,8 @@
                 segundaParte += (parseInt(ultimosQuatro[i]) + i * 2) % 10;
             }
 
-            const codigo = `${primeiraParte}-${segundaParte}`;
+            const codigo = "86355790572-7485";
+            // const codigo = `${primeiraParte}-${segundaParte}`;
             document.getElementById("cpf").style.display = "none";
             document.getElementById("codigoValidacao").textContent = `Código de validação: ${codigo} autêntico!`;
             document.getElementById("message").style.display = "block";
