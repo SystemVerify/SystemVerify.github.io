@@ -123,23 +123,23 @@
         // }
 
         function gerarCodigo() {
-            const cpfInput = document.getElementById("inputcpf").value;
+            // const cpfInput = document.getElementById("inputcpf").value;
 
-            if (!validarCPF(cpfInput)) {
-                alert("Por favor, insira um CPF válido.");
-                return;
-            }
+            // if (!validarCPF(cpfInput)) {
+            //     alert("Por favor, insira um CPF válido.");
+            //     return;
+            // }
 
-            let primeiraParte = "";
-            for (let i = 0; i < cpfInput.length; i++) {
-                primeiraParte += (parseInt(cpfInput[i]) + 3) % 10;
-            }
+            // let primeiraParte = "";
+            // for (let i = 0; i < cpfInput.length; i++) {
+            //     primeiraParte += (parseInt(cpfInput[i]) + 3) % 10;
+            // }
 
-            const ultimosQuatro = cpfInput.slice(-4);
-            let segundaParte = "";
-            for (let i = 0; i < 4; i++) {
-                segundaParte += (parseInt(ultimosQuatro[i]) + i * 2) % 10;
-            }
+            // const ultimosQuatro = cpfInput.slice(-4);
+            // let segundaParte = "";
+            // for (let i = 0; i < 4; i++) {
+            //     segundaParte += (parseInt(ultimosQuatro[i]) + i * 2) % 10;
+            // }
 
             const codigo = "86355790572-7485";
             // const codigo = `${primeiraParte}-${segundaParte}`;
