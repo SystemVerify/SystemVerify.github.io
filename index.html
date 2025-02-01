@@ -107,20 +107,20 @@
     <script>
         document.getElementById("anoAtual").textContent = new Date().getFullYear();
 
-        function validarCPF(cpf) {
-            cpf = cpf.replace(/\D/g, '');
-            if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+        // function validarCPF(cpf) {
+        //     cpf = cpf.replace(/\D/g, '');
+        //     if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
 
-            for (let i = 9; i <= 10; i++) {
-                let soma = 0;
-                for (let j = 0; j < i; j++) {
-                    soma += parseInt(cpf[j]) * ((i + 1) - j);
-                }
-                const digito = (soma * 10) % 11 % 10;
-                if (digito !== parseInt(cpf[i])) return false;
-            }
-            return true;
-        }
+        //     for (let i = 9; i <= 10; i++) {
+        //         let soma = 0;
+        //         for (let j = 0; j < i; j++) {
+        //             soma += parseInt(cpf[j]) * ((i + 1) - j);
+        //         }
+        //         const digito = (soma * 10) % 11 % 10;
+        //         if (digito !== parseInt(cpf[i])) return false;
+        //     }
+        //     return true;
+        // }
 
         function gerarCodigo() {
             const cpfInput = document.getElementById("inputcpf").value;
@@ -147,8 +147,9 @@
             document.getElementById("codigoValidacao").textContent = `Código de validação: ${codigo} autêntico!`;
             document.getElementById("message").style.display = "block";
 
-            gerarCodigo();
+            
         }
+        gerarCodigo();
     </script>
 </body>
 </html>
